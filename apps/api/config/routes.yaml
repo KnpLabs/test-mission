@@ -1,0 +1,15 @@
+---
+articles:
+  path: api/articles
+  controller: App\Application\REST\Article\Collection\GET
+  methods: GET
+
+article_get:
+  path: api/articles/{id}
+  controller: App\Application\REST\Article\Resource\GET
+  methods: GET
+
+articles_post:
+  path: api/articles
+  controller: App\Application\REST\Article\Resource\POST
+  methods: POST
