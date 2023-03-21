@@ -1,0 +1,29 @@
+---
+parameters:
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    App\Application\REST\:
+        resource: '%kernel.project_dir%/src/Application/REST'
+        tags:
+            - controller.service_arguments
+    
+    App\Domain\UseCase\:
+        tags:
+            - messenger.message_handler
+        resource: '%kernel.project_dir%/src/Domain/UseCase/*/Handler.php'
+
+    App\Infrastructure\Symfony\Messenger\MessageBus: ~
+
+    App\Application\MessageBus:
+        alias: App\Infrastructure\Symfony\Messenger\MessageBus
+
+    App\Infrastructure\Database\Repository\:
+        resource: '%kernel.project_dir%/src/Infrastructure/Database/Repository/*.php'
+
+    App\Domain\Repository\Articles:
+        alias: App\Infrastructure\Database\Repository\ArticleRepository       
