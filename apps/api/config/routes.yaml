@@ -13,3 +13,38 @@ articles_post:
   path: api/articles
   controller: App\Application\REST\Article\Resource\POST
   methods: POST
+
+comments:
+  path: api/comments
+  controller: App\Application\REST\Comment\Collection\GET
+  methods: GET
+
+comment_get:
+  path: api/articles/{articleId}/commentservices/{commentId}/comments/{id}
+  controller: App\Application\REST\Comment\Resource\GET
+  methods: GET
+
+comment_post:
+  path: api/articles/{articleId}/commentservices/{commentServiceId}/comments
+  controller: App\Application\REST\Comment\Resource\POST
+  methods: POST
+
+comment_reply_post:
+  path: api/articles/{articleId}/commentservices/{commentServiceId}/comments/{id}
+  controller: App\Application\REST\Comment\Resource\POST
+  methods: POST
+
+comment_services:
+  path: api/commentservices
+  controller: App\Application\REST\CommentService\Collection\GET
+  methods: GET
+
+comment_service_get:
+  path: api/articles/{articleId}/commentservices/{id}
+  controller: App\Application\REST\CommentService\Resource\GET
+  methods: GET
+
+comment_service_post:
+  path: api/articles/{id}/commentservices
+  controller: App\Application\REST\CommentService\Resource\POST
+  methods: POST

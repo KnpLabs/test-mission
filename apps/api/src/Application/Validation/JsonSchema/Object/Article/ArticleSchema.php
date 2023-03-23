@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Application\Validation\JsonSchema\Article\Object;
+namespace App\Application\Validation\JsonSchema\Object\Article;
 
 use KnpLabs\JsonSchema\JsonSchema;
 use KnpLabs\JsonSchema\ObjectSchema;

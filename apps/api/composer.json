@@ -21,7 +21,6 @@
         "symfony/framework-bundle": "6.2.*",
         "symfony/messenger": "6.2.*",
         "symfony/runtime": "6.2.*",
-        "symfony/serializer": "6.2.*",
         "symfony/twig-bundle": "6.2.*",
         "symfony/yaml": "6.2.*",
         "twig/extra-bundle": "^2.12|^3.0",
@@ -80,6 +79,7 @@
         "behat/behat": "^3.12",
         "fakerphp/faker": "^1.21",
         "friends-of-behat/symfony-extension": "^2.4",
-        "phpspec/phpspec": "^7.3"
+        "phpspec/phpspec": "^7.3",
+        "phpstan/phpstan": "*"
     }
 }

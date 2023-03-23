@@ -11,7 +11,7 @@ services:
         resource: '%kernel.project_dir%/src/Application/REST'
         tags:
             - controller.service_arguments
-    
+
     App\Domain\UseCase\:
         tags:
             - messenger.message_handler
@@ -19,11 +19,23 @@ services:
 
     App\Infrastructure\Symfony\Messenger\MessageBus: ~
 
+    App\Infrastructure\:
+        resource: '%kernel.project_dir%/src/Infrastructure'
+
     App\Application\MessageBus:
         alias: App\Infrastructure\Symfony\Messenger\MessageBus
+
+    App\Application\Validation\JsonSchema\:
+        resource: '%kernel.project_dir%/src/Application/Validation/JsonSchema'
 
     App\Infrastructure\Database\Repository\:
         resource: '%kernel.project_dir%/src/Infrastructure/Database/Repository/*.php'
 
     App\Domain\Repository\Articles:
-        alias: App\Infrastructure\Database\Repository\ArticleRepository       
+        alias: App\Infrastructure\Database\Collections\Articles
+
+    App\Domain\Repository\Comments:
+        alias: App\Infrastructure\Database\Collections\Comments
+
+    App\Domain\Repository\CommentServices:
+        alias: App\Infrastructure\Database\Collections\CommentServices      
