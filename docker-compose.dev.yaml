@@ -8,6 +8,8 @@ services:
       dockerfile: Dockerfile
     volumes:
       - './apps/api:/usr/src/app'
+    environment:
+      CORS_ALLOW_ORIGIN: '^https?://(localhost|127\.0\.0\.1)(:[0-9]+)?$$'
   
   nginx:
     build:
@@ -29,6 +31,17 @@ services:
       - 'MYSQL_PASSWORD=test'
     volumes:
       - 'db:/var/lib/mysql'
+  
+  client:
+    build:
+      context: ./apps/client
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    environment:
+      VITE_API_URL: http://localhost
+    volumes:
+      - './apps/client:/usr/src/app'
 
 volumes:
   db: ~
