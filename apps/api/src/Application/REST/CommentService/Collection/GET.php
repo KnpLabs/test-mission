@@ -42,7 +42,6 @@ class GET
             yield [
                 'id' => $commentService->getId(),
                 'article' => $commentService->getArticle()->getId(),
-
             ];
         }
     }

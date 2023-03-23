@@ -49,7 +49,19 @@ class POST
     {
         return [
             'article' => $output->commentService->getArticle()->getId(),
-            'comments' => $output->commentService->getComments(),
+            'comments' => $this->serializeComments($output->commentService->getComments()),
         ];
+    }
+
+    private function serializeComments(array $comments)
+    {
+        return array_map(
+            fn (Comment $comment): array => [
+                'id' => $comment->getId(),
+                'author' => $comment->getAuthor(),
+                'content' => $comment->getContent()
+            ],
+            [...$comments]
+        );
     }
 }

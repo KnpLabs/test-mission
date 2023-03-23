@@ -26,9 +26,6 @@
                 <cascade-remove />
                 <cascade-persist />
             </cascade>
-            <order-by>
-                <order-by-field name="comment" direction="DESC" />
-            </order-by>
         </one-to-many>
     </entity>
 </doctrine-mapping>
