@@ -16,3 +16,6 @@ migrate:
 	docker-compose -f docker-compose.dev.yaml run --rm api bin/console doctrine:database:drop --if-exists --force
 	docker-compose -f docker-compose.dev.yaml run --rm api bin/console doctrine:database:create --if-not-exists
 	docker-compose -f docker-compose.dev.yaml run --rm api bin/console doctrine:migration:migrate
+
+phpspec:
+	docker-compose -f docker-compose.dev.yaml run --rm api vendor/bin/phpspec run

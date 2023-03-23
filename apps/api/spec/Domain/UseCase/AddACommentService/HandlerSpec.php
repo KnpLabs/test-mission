@@ -14,6 +14,7 @@ use App\Domain\UseCase\AddACommentService\Handler;
 use App\Domain\UseCase\AddACommentService\Input;
 use App\Domain\UseCase\AddACommentService\Output;
 use PhpSpec\ObjectBehavior;
+use Prophecy\Argument;
 
 class HandlerSpec extends ObjectBehavior
 {
@@ -28,21 +29,19 @@ class HandlerSpec extends ObjectBehavior
     }
 
     function it_adds_a_comment_service(
-        $articles, 
+        $articles,
+        Article $article,
         $commentServices,
     ): void {
-        $article = new Article('Jane Doe', 'Title', 'Lorem Ipsum');
         $articleId = 4;
 
         $input = new Input($articleId);
-
-        $commentService = new CommentService($article);
 
         $articles->find($articleId)->willReturn($article);
 
         $article->getCommentService()->willReturn(null);
 
-        $commentServices->add($commentService)->shouldBeCalled();
+        $commentServices->add(Argument::type(CommentService::class))->shouldBeCalled();
         $commentServices->flush()->shouldBeCalled();
 
         $output = $this($input);

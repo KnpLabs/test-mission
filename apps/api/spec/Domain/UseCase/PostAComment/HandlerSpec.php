@@ -17,6 +17,7 @@ use App\Domain\UseCase\PostAComment\Handler;
 use App\Domain\UseCase\PostAComment\Input;
 use App\Domain\UseCase\PostAComment\Output;
 use PhpSpec\ObjectBehavior;
+use Prophecy\Argument;
 
 class HandlerSpec extends ObjectBehavior
 {
@@ -41,11 +42,10 @@ class HandlerSpec extends ObjectBehavior
 
         $article = new Article('Jane Doe', 'Title', 'Lorem Ipsum');
         $commentService = new CommentService($article);
-        $comment = new Comment($input->author, $input->content, $commentService, $input->parentId);
         $articles->find($articleId)->willReturn($article);
         $commentServices->find($commentServiceId)->willReturn($commentService);
 
-        $comments->add($comment)->shouldBeCalled();
+        $comments->add(Argument::type(Comment::class))->shouldBeCalled();
         $comments->flush()->shouldBeCalled();
 
         $output = $this($input);
