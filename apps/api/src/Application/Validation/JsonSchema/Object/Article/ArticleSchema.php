@@ -7,6 +7,9 @@ namespace App\Application\Validation\JsonSchema\Object\Article;
 use KnpLabs\JsonSchema\JsonSchema;
 use KnpLabs\JsonSchema\ObjectSchema;
 
+/**
+ * @extends ObjectSchema<ArticleSchema>
+ */
 class ArticleSchema extends ObjectSchema
 {
     public function __construct()

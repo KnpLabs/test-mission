@@ -12,6 +12,10 @@ class CommentService
 {
     public int $id;
     public DateTimeImmutable $createdAt;
+
+    /**
+     * @var Collection<int, Comment>
+     */
     public Collection $comments;
 
     public function __construct(public Article $article)
@@ -31,7 +35,7 @@ class CommentService
     }
 
     /**
-     * @return array<Comment>
+     * @return array<int, Comment>
      */
     public function getComments(): array
     {

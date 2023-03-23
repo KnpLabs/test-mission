@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Infrastructure\Database\Collections;
+namespace App\Infrastructure\Database\Collections;
 
 use App\Domain;
 use App\Infrastructure\Database\Repository\ArticleRepository;
